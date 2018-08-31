@@ -1,0 +1,15 @@
+#title-text{
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+}
+#nameTitle{
+    font-size: 1.2rem !important;
+    font-weight:500 !important;
+}
+
+.img-fluid{
+    max-width: 450px!important;
+}
+div{
+    padding-top:10px;
+}
