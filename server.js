@@ -18,7 +18,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
-console.log(MONGODB_URI);
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true
