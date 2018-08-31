@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const request = require("request");
+require('dotenv').config()
 
 const db = require("./models");
 
@@ -16,7 +17,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(express.static("public"));
-var MONGODB_URI = "mongodb://<dbuser>:<dbpassword>@ds133152.mlab.com:33152/heroku_n8vtvvzq" || "mongodb://localhost/newsscraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
+console.log(MONGODB_URI);
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true
