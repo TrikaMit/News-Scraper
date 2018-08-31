@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(express.static("public"));
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
+var MONGODB_URI = "mongodb://<dbuser>:<dbpassword>@ds133152.mlab.com:33152/heroku_n8vtvvzq" || "mongodb://localhost/newsscraper";
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true
