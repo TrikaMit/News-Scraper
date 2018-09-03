@@ -19,9 +19,7 @@ app.use(bodyParser.urlencoded({
 app.use(express.static("public"));
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/newsscraper";
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-    useNewUrlParser: true
-});
+mongoose.connect(MONGODB_URI);
 
 axios.get("https://www.huffingtonpost.com/section/world-news").then(function (response) {
     const $ = cheerio.load(response.data);
@@ -45,6 +43,12 @@ axios.get("https://www.huffingtonpost.com/section/world-news").then(function (re
             })
     });
 })
+app.get("/", (req, res) =>
+    db.Article.find({}).sort({
+        _id: -1
+    })
+    .then((dbArticle) => res.json(dbArticle))
+    .catch((err) => res.json(err)));
 
 app.get("/articles", (req, res) =>
     db.Article.find({}).sort({
