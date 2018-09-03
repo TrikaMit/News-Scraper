@@ -10,7 +10,7 @@ require('dotenv').config()
 
 const db = require("./models");
 
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({
